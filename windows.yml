@@ -1,0 +1,15 @@
+name: tif2ims
+
+channels:
+  - defaults
+  - SimpleITK
+  - conda-forge
+  
+dependencies:
+  - gooey
+  - SimpleITK>=2.0.0
+  - numpy
+  - h5py>=2.10.0
+  - pip
+  - pip:
+    - pyvips>=2.2.1
