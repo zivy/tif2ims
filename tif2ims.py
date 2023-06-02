@@ -43,7 +43,7 @@ def main(argv=None):
     )
     args = parser.parse_args(argv)
     prefix_len = len(args.filename_prefix)
-    file_names = list(pathlib.Path(args.data_dir).glob(args.filename_prefix + "*.tif"))
+    file_names = sorted(list(pathlib.Path(args.data_dir).glob(args.filename_prefix + "*.tif")))
     if not file_names:
         print(
             "Directory does not contain files with the given prefix ({args.filename_prefix}).",
