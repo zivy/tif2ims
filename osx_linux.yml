@@ -11,4 +11,4 @@ dependencies:
   - SimpleITK>=2.0.0
   - numpy
   - h5py>=2.10.0
-
+  - pandas

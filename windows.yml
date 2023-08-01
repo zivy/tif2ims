@@ -10,6 +10,7 @@ dependencies:
   - SimpleITK>=2.0.0
   - numpy
   - h5py>=2.10.0
+  - pandas
   - pip
   - pip:
     - pyvips>=2.2.1
