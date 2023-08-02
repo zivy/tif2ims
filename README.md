@@ -1,6 +1,6 @@
-Programs for converting+combining/extracting tif to ims and the other way round.
+Programs for converting+combining/extracting tif to ims and the other way round and for repairing erroneous pixel sizes.
 
-**tif2ims**: receive a set of tif files that represent channels and combine them into a single file using the imaris format. **The order of the channels in the output file is determined by the lexicographical order of the file names.** Result is written to an ims file with the same file name prefix as the original.
+**tif2ims**: Receive a set of tif files that represent channels and combine them into a single file using the imaris format. **The order of the channels in the output file is determined by the lexicographical order of the file names.** Result is written to an ims file with the same file name prefix as the original.
 
 For example, the output file created from the following files will
 have the channel order:
@@ -19,9 +19,11 @@ If we want to change the order we can modify the file name, after the common pre
 4. SLIDE-1895_4.0.4_R001_04_Cy3_CD86_FINAL_AFR_F.tif
 ```
 
-**ims2tif**: receive a set of ims files and extract the specified channel, time point and level in the image pyramid from each of the files. Result is written to tif file with the channel number, pyramid level and time point prefixed to the original file name.
+**ims2tif**: Receive a set of ims files and extract the specified channel, time point and level in the image pyramid from each of the files. Result is written to tif file with the channel number, pyramid level and time point prefixed to the original file name.
 
 For example, the output created for the file `Barcode_1034_CollIV.ims` when extracting channel 1, pyramid level 3 and timepoint 2 is `c1_l3_t2_Barcode_1034_CollIV.tif`. Note that all indexes (channel, pyramid level and timepoint are zero based).
+
+**repair_ims_size**: Receive a csv file with four columns (`file_name,x_in_um,y_in_um,z_in_um`). The column `file_name` contains the paths to the files relative to the location of the csv file. The pixel sizes are in micrometers. Use this tool to repair/correct pixel sizes if they were incorrectly imported into imaris.
 
 ## One time setup (Windows)
 
@@ -35,12 +37,12 @@ For example, the output created for the file `Barcode_1034_CollIV.ims` when extr
     ```
 1. Download the [libvips zip file](https://github.com/libvips/build-win64-mxe/releases/download/v8.13.2/vips-dev-w64-all-8.13.2.zip).
 1. Copy it to this directory and unzip it.
-1. Edit the `run_tif2ims.bat` and `run_ims2tif.bat` files. Set the path to anaconda and path to vips library (see current batch file for example).
+1. Edit the `run_tif2ims.bat`, `run_ims2tif.bat` and `run_repair_ims_size.bat` files. Set the path to anaconda and path to vips library (see current batch file for example).
 
 ## Usage
-1. Double click the  `run_tif2ims.bat` file or `run_ims2tif.bat`.
+1. Double click the  relevant file: `run_tif2ims.bat`, `run_ims2tif.bat`, `run_repair_ims_size.bat`.
 
-On OSX/Linux installation is easier, no need to download the libvips and set the path to it. Install `conda env create -f osx_linux.yml` and then edit the `run_tif2ims.sh` `run_ims2tif.sh` files, updating the path to anaconda.
+On OSX/Linux installation is easier, no need to download the libvips and set the path to it. Install `conda env create -f osx_linux.yml` and then edit the `run_tif2ims.sh` `run_ims2tif.sh`, `run_repair_ims_size.sh` files, updating the path to anaconda.
 
 ### Running from commandline
 
