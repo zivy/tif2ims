@@ -1,4 +1,4 @@
-Programs for converting+combining/extracting tif to ims and the other way round and for repairing erroneous pixel sizes.
+Programs for converting+combining/extracting tif to ims and the other way round, repairing erroneous pixel sizes and extracting a slice from a z-stack.
 
 **tif2ims**: Receive a set of tif files that represent channels and combine them into a single file using the imaris format. **The order of the channels in the output file is determined by the lexicographical order of the file names.** Result is written to an ims file with the same file name prefix as the original.
 
@@ -25,6 +25,10 @@ For example, the output created for the file `Barcode_1034_CollIV.ims` when extr
 
 **repair_ims_size**: Receive a csv file with four columns (`file_name,x_in_um,y_in_um,z_in_um`). The column `file_name` contains the paths to the files relative to the location of the csv file. The pixel sizes are in micrometers. Use this tool to repair/correct pixel sizes if they were incorrectly imported into imaris.
 
+**extract_slice**: Receive a set of ims files and extract the specified slice (using percentage in z-stack, 0 - first slice, 0.5 - middle, 1.0 - last slice), and time point from each of the files. Result is written to ims file with the extracted slice number and time point postfixed to the original file name.
+
+For example, the output created for the file `Barcode_1034_CollIV.ims` when extracting slice 2 and timepoint 0 is `Barcode_1034_CollIV_s2_t0.ims`. Note that all indexes (slice and time point are zero based).
+
 ## One time setup (Windows)
 
 1. Install miniconda if not already installed ([download](https://docs.conda.io/en/latest/miniconda.html)).
@@ -40,7 +44,7 @@ For example, the output created for the file `Barcode_1034_CollIV.ims` when extr
 1. Edit the `run_tif2ims.bat`, `run_ims2tif.bat` and `run_repair_ims_size.bat` files. Set the path to anaconda and path to vips library (see current batch file for example).
 
 ## Usage
-1. Double click the  relevant file: `run_tif2ims.bat`, `run_ims2tif.bat`, `run_repair_ims_size.bat`.
+1. Double click the  relevant file: `run_tif2ims.bat`, `run_ims2tif.bat`, `run_repair_ims_size.bat`, `run_extract_slice.bat`.
 
 On OSX/Linux installation is easier, no need to download the libvips and set the path to it. Install `conda env create -f osx_linux.yml` and then edit the `run_tif2ims.sh` `run_ims2tif.sh`, `run_repair_ims_size.sh` files, updating the path to anaconda.
 
